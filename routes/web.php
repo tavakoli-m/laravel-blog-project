@@ -5,10 +5,10 @@ use App\Http\Controllers\Admin\Home\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', HomeController::class)->name('admin.index');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', HomeController::class)->name('index');
 
-    Route::prefix('category')->name('category')->controller(CategoryController::class)->group(function () {
+    Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
@@ -17,7 +17,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{category}', 'destroy')->name('delete');
     });
 
-    Route::prefix('post')->name('category')->controller(PostController::class)->group(function () {
+    Route::prefix('post')->name('post.')->controller(PostController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
