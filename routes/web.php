@@ -13,7 +13,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
         Route::get('/edit/{category}', 'edit')->name('edit');
-        Route::put('/{category}', 'update');
+        Route::put('/{category}', 'update')->name('update');
         Route::delete('/{category}', 'destroy')->name('delete');
     });
 
