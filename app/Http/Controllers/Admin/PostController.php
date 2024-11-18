@@ -36,6 +36,17 @@ class PostController extends Controller
     public function store(StorePostRequest $request, ImageService $imageService)
     {
         $inputs = $request->validated();
+
+        $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'posts');
+        $result = $imageService->createIndexAndSave($request->file('image'));
+        if ($result === false) {
+            return back();
+        }
+        $inputs['image'] = $result;
+
+        $post = Post::create($inputs);
+
+        return to_route('admin.post.index');
     }
 
     /**
@@ -60,19 +71,44 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post, ImageService $imageService)
     {
-        //
+        $inputs = $request->validated();
+
+        if ($request->hasFile('image')) {
+            if (!empty($post->image)) {
+                $imageService->deleteDirectoryAndFiles($post->image['directory']);
+            }
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'posts');
+            $result = $imageService->createIndexAndSave($request->file('image'));
+            if ($result === false) {
+                return back();
+            }
+            $inputs['image'] = $result;
+        }
+
+        $result = $post->update($inputs);
+
+        return to_route('admin.post.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, ImageService $imageService)
     {
-        //
+        if (!empty($post->image)) {
+            $imageService->deleteDirectoryAndFiles($post->image['directory']);
+        }
+
+        $result = $post->delete();
+
+        return back();
     }
 
     public function changeStatus(Post $post)
     {
-        //
+        $result = $post->update([
+            'status' => $post->status === 1 ? 0 : 1
+        ]);
+        return back();
     }
 }

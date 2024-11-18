@@ -21,9 +21,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
-        Route::get('/edit/{category}', 'edit')->name('edit');
-        Route::put('/{category}', 'update');
-        Route::delete('/{category}', 'destroy')->name('delete');
-        Route::get('/change-status/{category}', 'changeStatus')->name('change-status');
+        Route::get('/edit/{post}', 'edit')->name('edit');
+        Route::put('/{post}', 'update')->name('update');
+        Route::delete('/{post}', 'destroy')->name('delete');
+        Route::get('/change-status/{post}', 'changeStatus')->name('change-status');
     });
 });

@@ -22,4 +22,9 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    protected function casts(){
+        return [
+            'image' => 'array'
+        ];
+    }
 }
