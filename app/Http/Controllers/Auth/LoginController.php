@@ -18,8 +18,6 @@ class LoginController extends Controller
             return back();
         }
 
-        $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return to_route('admin.index');
