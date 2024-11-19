@@ -1,15 +1,15 @@
 <?php
 
-use App\CategoryController as AppCategoryController;
-use App\HomeController as AppHomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Home\HomeController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\App\HomeController as AppHomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\PostController as AppPostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\App\CategoryController as AppCategoryController;
+use App\Http\Controllers\App\PostController as AppPostController;
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', HomeController::class)->name('index');
