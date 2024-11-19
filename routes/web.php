@@ -1,11 +1,14 @@
 <?php
 
+use App\CategoryController as AppCategoryController;
+use App\HomeController as AppHomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Home\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\PostController as AppPostController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
@@ -43,5 +46,10 @@ Route::prefix('/')->name('app.')->group(function () {
         Route::post('/', 'register')->name('register');
     });
 
-    Route::get('/logout',LogoutController::class)->name('logout');
+    Route::get('/logout', LogoutController::class)->name('logout');
+
+
+    Route::get('/', AppHomeController::class)->name('index');
+    Route::get('/category/{category}', AppCategoryController::class)->name('category');
+    Route::get('/post/{post}', AppPostController::class)->name('post');
 });
