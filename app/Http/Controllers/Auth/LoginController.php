@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -11,7 +13,11 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(){
-        dd("hi");
+    public function login(LoginRequest $request){
+        if(!Auth::attempt($request->validated())){
+            return back();
+        }
+
+        return to_route('admin.index');
     }
 }
