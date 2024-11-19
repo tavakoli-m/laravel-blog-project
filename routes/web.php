@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Home\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
@@ -41,4 +42,6 @@ Route::prefix('/')->name('app.')->group(function () {
         Route::get('/', 'registerView')->name('register-view');
         Route::post('/', 'register')->name('register');
     });
+
+    Route::get('/logout',LogoutController::class)->name('logout');
 });
