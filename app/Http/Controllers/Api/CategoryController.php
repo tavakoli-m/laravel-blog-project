@@ -7,6 +7,7 @@ use App\Http\Requests\Api\Category\StoreCategoryRequest;
 use App\Http\Requests\Api\Category\UpdateCategoryRequest;
 use App\Http\Resources\Api\Category\CategoryResource;
 use App\Http\Resources\Api\Category\CategoryResourceCollection;
+use App\Http\Resources\Api\Post\PostResourceCollection;
 use App\Models\Category;
 use FastResponse\FastResponse\Facades\Response;
 use Illuminate\Http\Request;
@@ -58,5 +59,12 @@ class CategoryController extends Controller
     {
         $category->delete();
         return Response::withStatus(200)->withData([])->send();
+    }
+
+    public function category(Category $category)
+    {
+        $posts = $category->posts;
+
+        return Response::withStatus(200)->withAppends([new PostResourceCollection($posts)])->send();
     }
 }

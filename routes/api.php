@@ -11,5 +11,6 @@ Route::get('/user', function (Request $request) {
 
 
 Route::apiResource('category',CategoryController::class);
+Route::get('/category/{category}/posts',[CategoryController::class,'posts']);
 Route::apiResource('post',PostController::class);
 Route::get('/post/change-status/{post}',[PostController::class,'changeStatus']);
