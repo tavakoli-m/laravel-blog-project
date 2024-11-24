@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea0f6470cad8d0671ed9552b9a89e398",
+    "content-hash": "697f6dd7149f906d9a59d51b33f2cf96",
     "packages": [
         {
             "name": "brick/math",
@@ -509,6 +509,43 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "fastresponse/fastresponse",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tavakoli-m/FastResponse.git",
+                "reference": "7b82124aec13188f47cce3165cae5adb4d4781c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tavakoli-m/FastResponse/zipball/7b82124aec13188f47cce3165cae5adb4d4781c4",
+                "reference": "7b82124aec13188f47cce3165cae5adb4d4781c4",
+                "shasum": ""
+            },
+            "type": "pakage",
+            "autoload": {
+                "psr-4": {
+                    "Fastresponse\\Fastresponse\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohammadreza Tavakoli",
+                    "email": "heyreza8@gmail.com"
+                }
+            ],
+            "description": "fast response is a simple and powerfull pakage for managing api responses in Laravel. Using this pakage, you can manage standardzed, readable, and optimized responses quickly and without repetitive coding.",
+            "support": {
+                "issues": "https://github.com/tavakoli-m/FastResponse/issues",
+                "source": "https://github.com/tavakoli-m/FastResponse/tree/v1.0.0"
+            },
+            "time": "2024-11-22T12:48:06+00:00"
         },
         {
             "name": "fruitcake/php-cors",
