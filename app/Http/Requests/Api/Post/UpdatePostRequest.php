@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api\Post;
 
 use App\Http\Services\FormRequest\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePostRequest extends FormRequest
 {
@@ -22,7 +23,10 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', Rule::unique('posts', 'title')->ignore($this->post->id)],
+            'image' => ['nullable', 'image'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'body' => ['required']
         ];
     }
 }
